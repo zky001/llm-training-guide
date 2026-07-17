@@ -49,11 +49,30 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'sgd', zh: '随机梯度下降', en: 'SGD', def: '每次只用一小批数据估算梯度并更新参数的梯度下降，又快又省内存。', chapter: '2'},
   {id: 'batch', zh: '批 / 批大小', en: 'Batch / Batch Size', def: '一次参数更新所用的那一小撮训练样本及其数量。', chapter: '2'},
 
+  // ---- 第 2 章（补充） ----
+  {id: 'relu', zh: 'ReLU', en: 'Rectified Linear Unit', def: '最常用的激活函数：负数归零、正数原样通过。每个 ReLU 神经元给函数贡献一个「折角」。', chapter: '2'},
+  {id: 'sigmoid', zh: 'Sigmoid 函数', en: 'Sigmoid', def: '把任意数字压进 0~1 之间的 S 形函数，常用来表示概率或「开关程度」。', chapter: '2'},
+  {id: 'hidden-layer', zh: '隐藏层', en: 'Hidden Layer', def: '神经网络中夹在输入和输出之间的中间层，负责逐层加工特征。', chapter: '2'},
+  {id: 'cross-entropy', zh: '交叉熵', en: 'Cross-Entropy', def: '分类和语言模型的标准损失：看模型给正确答案分配了多少概率，概率越小罚分越重。', chapter: '2'},
+  {id: 'overfitting', zh: '过拟合', en: 'Overfitting', def: '模型把训练数据里的噪声也背了下来，导致在没见过的数据上反而表现变差。', chapter: '2'},
+  {id: 'autograd', zh: '自动微分', en: 'Automatic Differentiation', def: '深度学习框架自动帮你算所有参数梯度的机制，反向传播就是它的核心算法。', chapter: '2'},
+
   // ---- 第 3 章 ----
   {id: 'transformer', zh: 'Transformer', en: 'Transformer', def: '2017 年提出的神经网络架构，靠注意力机制并行处理整段文本，是所有主流大模型的骨架。', chapter: '3'},
   {id: 'attention', zh: '注意力机制', en: 'Attention', def: '让每个词按「相关程度」加权参考句中其他词的机制，是 Transformer 的核心。', chapter: '3'},
+  {id: 'multi-head', zh: '多头注意力', en: 'Multi-Head Attention', def: '同时运行多组注意力，每个「头」学会关注一种不同的关系（指代、语法、位置……）。', chapter: '3'},
+  {id: 'positional-encoding', zh: '位置编码', en: 'Positional Encoding', def: '给每个位置发的「工牌」：注意力本身不分先后，位置信息要额外注入。', chapter: '3'},
+  {id: 'causal-mask', zh: '因果遮罩', en: 'Causal Mask', def: '生成式模型的规则：每个词只准看它前面的词，不许偷看未来。', chapter: '3'},
+  {id: 'residual', zh: '残差连接', en: 'Residual Connection', def: '每层的输出 = 输入 + 修正量。给梯度修了一条直达电梯，深层网络才训得动。', chapter: '3'},
+  {id: 'layer-norm', zh: '层归一化', en: 'Layer Normalization', def: '每层把数值重新校准到稳定范围，防止信号越传越大或越传越小。', chapter: '3'},
+  {id: 'feed-forward', zh: '前馈网络', en: 'Feed-Forward Network (FFN)', def: 'Transformer 块里注意力之后的小型多层网络，逐个位置加工信息，占了大头参数。', chapter: '3'},
+  {id: 'logits', zh: '逻辑值', en: 'Logits', def: '模型输出层的原始打分（可正可负），过一次 softmax 才变成概率。', chapter: '3'},
+  {id: 'softmax', zh: 'Softmax', en: 'Softmax', def: '把一组任意打分变成总和为 1 的概率分布的函数：分高的占大头，但谁都有份。', chapter: '3'},
   {id: 'context-window', zh: '上下文窗口', en: 'Context Window', def: '模型一次能「看在眼里」的最大 token 数，超出的部分它就不知道了。', chapter: '3'},
   {id: 'temperature', zh: '温度', en: 'Temperature', def: '控制生成随机性的旋钮：调低更保守稳定，调高更天马行空。', chapter: '3'},
+  {id: 'top-k', zh: 'Top-k 采样', en: 'Top-k Sampling', def: '只在概率最高的 k 个候选词里抽签，把长尾里的怪词直接排除。', chapter: '3'},
+  {id: 'top-p', zh: 'Top-p（核）采样', en: 'Top-p / Nucleus Sampling', def: '按概率从高到低累加，刚够 p（如 90%）就截断，在这批「核心候选」里抽签。', chapter: '3'},
+  {id: 'autoregressive', zh: '自回归', en: 'Autoregressive', def: '一次只生成一个词，把它拼回输入再生成下一个——大模型说话的基本循环。', chapter: '3'},
 
   // ---- 第 4 章 ----
   {id: 'pretraining', zh: '预训练', en: 'Pre-training', def: '用海量普通文本做「预测下一个词」训练，让模型学会语言和世界知识的阶段，占算力大头。', chapter: '4'},

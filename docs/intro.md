@@ -57,8 +57,8 @@ flowchart LR
 | --- | --- | --- |
 | [第 0 章 · 预备知识](/docs/prerequisites) | 看懂全书所需的全部数学直觉：函数拟合、向量矩阵、概率、梯度 | ✅ |
 | [第 1 章 · 什么是语言模型](/docs/language-models) | 大模型的本质：预测下一个词；分词与词向量 | ✅ |
-| [第 2 章 · 神经网络与训练三件套](/docs/neural-networks) | 损失函数、梯度下降、反向传播 | 🚧 |
-| [第 3 章 · Transformer 架构](/docs/transformer) | 注意力机制与现代大模型的骨架 | 🚧 |
+| [第 2 章 · 神经网络与训练三件套](/docs/neural-networks) | 损失函数、梯度下降、反向传播 | ✅ |
+| [第 3 章 · Transformer 架构](/docs/transformer) | 注意力机制与现代大模型的骨架 | ✅ |
 | [第 4 章 · 预训练](/docs/pretraining) | 数据工程、Scaling Laws、GPU 集群并行训练 | 🚧 |
 | [第 5 章 · 后训练与对齐](/docs/post-training) | SFT、RLHF、DPO，从「会说话」到「说人话」 | 🚧 |
 | [第 6 章 · 推理与部署](/docs/inference) | KV Cache、量化、蒸馏，让模型跑得又快又省 | 🚧 |

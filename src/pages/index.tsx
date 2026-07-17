@@ -26,8 +26,8 @@ const FEATURES: {icon: string; title: string; desc: string}[] = [
 const CHAPTERS: {n: string; title: string; desc: string; href: string; done: boolean}[] = [
   {n: '第 0 章', title: '预备知识', desc: '机器学习、向量矩阵、概率、梯度——只需初中代数就能上车', href: '/docs/prerequisites', done: true},
   {n: '第 1 章', title: '什么是语言模型', desc: '预测下一个词、分词（BPE）、词向量', href: '/docs/language-models', done: true},
-  {n: '第 2 章', title: '神经网络与训练三件套', desc: '损失、梯度下降、反向传播，浏览器里现场训练', href: '/docs/neural-networks', done: false},
-  {n: '第 3 章', title: 'Transformer 架构', desc: '注意力机制、QKV、位置编码、采样生成', href: '/docs/transformer', done: false},
+  {n: '第 2 章', title: '神经网络与训练三件套', desc: '损失、梯度下降、反向传播，浏览器里现场训练', href: '/docs/neural-networks', done: true},
+  {n: '第 3 章', title: 'Transformer 架构', desc: '注意力机制、QKV、位置编码、采样生成', href: '/docs/transformer', done: true},
   {n: '第 4 章', title: '预训练', desc: '数据工程、Scaling Laws、GPU 集群与并行策略', href: '/docs/pretraining', done: false},
   {n: '第 5 章', title: '后训练与对齐', desc: 'SFT、RLHF、DPO/GRPO、推理强化学习', href: '/docs/post-training', done: false},
   {n: '第 6 章', title: '推理与部署', desc: 'KV Cache、量化、蒸馏、vLLM', href: '/docs/inference', done: false},

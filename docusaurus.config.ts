@@ -57,7 +57,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🚧 项目持续建设中，第 0、1 章已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🚧 项目持续建设中，第 0~3 章已上线（15 个交互实验）。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {
@@ -86,6 +86,8 @@ const config: Config = {
             {label: '导读：如何使用本教程', to: '/docs/intro'},
             {label: '第 0 章 · 预备知识', to: '/docs/prerequisites'},
             {label: '第 1 章 · 什么是语言模型', to: '/docs/language-models'},
+            {label: '第 2 章 · 神经网络与训练三件套', to: '/docs/neural-networks'},
+            {label: '第 3 章 · Transformer 架构', to: '/docs/transformer'},
           ],
         },
         {
