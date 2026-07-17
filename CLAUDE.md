@@ -13,13 +13,22 @@ npm run typecheck  # tsc 类型检查
 ## 目录结构
 
 ```
-docs/                       # 全部教程内容（MDX），按章节分目录，NN- 前缀决定顺序
+docs/                       # 上篇《大模型是怎么炼成的》（MDX），按章节分目录，NN- 前缀决定顺序
+agents/                     # 下篇《智能体是怎么工作的》——独立文档实例（routeBasePath /agents，
+                            #   侧边栏 sidebarsAgents.ts，导航栏单独入口）
 src/components/             # DeepDive / Quiz / Term / GlossaryTable 等内容组件
 src/components/interactive/ # 交互实验组件，每个一个目录，统一用 PlaygroundCard 包裹
-src/data/glossary.ts        # 全站术语表（Term 组件和附录页的数据源）
-src/theme/MDXComponents.tsx # MDX 全局组件注册（新交互组件要在这里登记）
+src/data/glossary.ts        # 全站术语表（Term 组件和附录页的数据源；下篇词条 chapter 用 A0~A8）
+src/theme/MDXComponents.tsx # MDX 全局组件注册（新交互组件要在这里登记，两篇通用）
 src/theme/Root.tsx          # 学习模式（直觉/深入）Provider + 右下角悬浮切换按钮
 ```
+
+## 上下篇互链规则（重要）
+
+- 上、下篇是两个独立的 docs 插件实例，**相对路径跨不过去**。
+- 篇内链接：带扩展名的文件相对路径（如 `./02-sft.mdx`、`../01-tool-use/index.md`）。
+- 跨篇链接：绝对 URL 路径、无扩展名（如 `/docs/post-training/sft`、`/agents/tool-use`）。
+- 下篇风格样板：`agents/00-from-chat-to-action/01-what-is-agent.mdx`（比上篇更强调工程取舍，年份标注更密集，实验轨迹一律注明「教学构造」）。
 
 ## 内容写作规范（人和 AI 都要遵守）
 

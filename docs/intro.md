@@ -66,6 +66,10 @@ flowchart LR
 | [第 8 章 · 前沿与全景](/docs/frontier) | MoE、长上下文、多模态、推理模型 | ✅ |
 | [附录](/docs/appendix/glossary) | 术语表、动手实践路线、论文与资料清单 | ✅ |
 
+## 🤖 读完上篇之后
+
+本站还有[下篇 ·《智能体是怎么工作的》](/agents/intro)（连载中）：讲清一个只会「预测下一个词」的模型，怎么学会查天气、改日程、修 bug——工具调用、规划反思、多智能体、评测与安全，一条线讲完 Agent 的工作原理。
+
 ## 🤝 参与共建
 
 本项目完全开源（代码 MIT，内容 CC BY-SA 4.0）。发现错误、类比不贴切、有更好的实验点子？欢迎到 [GitHub](https://github.com/zky001/llm-training-guide) 提 Issue 或 PR。每一页右下角都有「编辑此页」入口。

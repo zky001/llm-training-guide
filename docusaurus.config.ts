@@ -6,7 +6,7 @@ import rehypeKatex from 'rehype-katex';
 
 const config: Config = {
   title: '大模型是怎么炼成的',
-  tagline: '从「预测下一个词」到 RLHF —— 人人都能看懂的大模型训练交互式图解教程',
+  tagline: '从「预测下一个词」到「自主行动」—— 人人都能看懂的大模型与智能体交互式图解教程',
   favicon: 'img/logo.svg',
 
   url: 'https://zky001.github.io',
@@ -29,7 +29,33 @@ const config: Config = {
     },
   },
 
-  themes: ['@docusaurus/theme-mermaid', '@easyops-cn/docusaurus-search-local'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ['zh', 'en'],
+        docsRouteBasePath: ['docs', 'agents'],
+        docsDir: ['docs', 'agents'],
+      },
+    ],
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'agents',
+        path: 'agents',
+        routeBasePath: 'agents',
+        sidebarPath: './sidebarsAgents.ts',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
+        editUrl: 'https://github.com/zky001/llm-training-guide/edit/main/',
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -57,7 +83,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🎉 全书 9 章完稿：23 个交互实验 + 可下载全景海报。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🎉 上篇完稿（9 章 · 23 个实验）· 🤖 下篇《智能体是怎么工作的》连载中：A0~A2 已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {
@@ -67,9 +93,15 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        {type: 'docSidebar', sidebarId: 'guideSidebar', position: 'left', label: '📖 教程'},
+        {type: 'docSidebar', sidebarId: 'guideSidebar', position: 'left', label: '📖 上篇 · 大模型'},
+        {
+          type: 'docSidebar',
+          sidebarId: 'agentsSidebar',
+          docsPluginId: 'agents',
+          position: 'left',
+          label: '🤖 下篇 · 智能体',
+        },
         {to: '/docs/appendix/glossary', label: '术语表', position: 'left'},
-        {to: '/docs/appendix/resources', label: '延伸资料', position: 'left'},
         {
           href: 'https://github.com/zky001/llm-training-guide',
           label: 'GitHub',
@@ -88,6 +120,7 @@ const config: Config = {
             {label: '第 1 章 · 什么是语言模型', to: '/docs/language-models'},
             {label: '第 2 章 · 神经网络与训练三件套', to: '/docs/neural-networks'},
             {label: '第 3 章 · Transformer 架构', to: '/docs/transformer'},
+            {label: '下篇 · 智能体是怎么工作的', to: '/agents/intro'},
           ],
         },
         {

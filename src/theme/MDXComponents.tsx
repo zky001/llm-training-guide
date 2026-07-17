@@ -27,6 +27,9 @@ import QuantizationDemo from '@site/src/components/interactive/QuantizationDemo'
 import JudgeGame from '@site/src/components/interactive/JudgeGame';
 import MoeDemo from '@site/src/components/interactive/MoeDemo';
 import Panorama from '@site/src/components/interactive/Panorama';
+import TracePlayer from '@site/src/components/interactive/TracePlayer';
+import ToolCallLab from '@site/src/components/interactive/ToolCallLab';
+import PlannerCompare from '@site/src/components/interactive/PlannerCompare';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -62,4 +65,7 @@ export default {
   JudgeGame,
   MoeDemo,
   Panorama,
+  TracePlayer,
+  ToolCallLab,
+  PlannerCompare,
 };

@@ -129,4 +129,18 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'multimodal', zh: '多模态', en: 'Multimodal', def: '让同一个模型看图、听声、读文字——把不同形式的信息都变成 token 序列处理。', chapter: '8'},
   {id: 'reasoning-model', zh: '推理模型', en: 'Reasoning Model', def: 'o1 / R1 一类先「多想一会儿」（生成长思维链）再作答的模型，用强化学习训练出来。', chapter: '8'},
   {id: 'agent', zh: '智能体', en: 'Agent', def: '会自己规划步骤、调用工具（搜索、写代码、操作软件）来完成任务的大模型应用形态。', chapter: '8'},
+
+  // ---- 下篇 A0 ----
+  {id: 'agent-loop', zh: '行动循环', en: 'Agent Loop', def: '智能体的心跳：思考 → 行动（调工具）→ 观察结果 → 再思考，循环直到任务完成。', chapter: 'A0'},
+  {id: 'trace', zh: '轨迹', en: 'Trace', def: '智能体完成一次任务的全过程记录（每一步的思考、工具调用和结果），排错和评测都靠它。', chapter: 'A0'},
+  {id: 'workflow', zh: '工作流', en: 'Workflow', def: '由人预先编排好步骤、LLM 只负责各步内容的系统；与「模型自己决定下一步」的智能体相对。', chapter: 'A0'},
+  {id: 'react', zh: 'ReAct', en: 'ReAct (Reason + Act)', def: '「思考一句、行动一步、看看结果」交替进行的经典智能体范式（2022 年提出）。', chapter: 'A0'},
+
+  // ---- 下篇 A1 ----
+  {id: 'function-calling', zh: '工具调用', en: 'Function Calling / Tool Use', def: '模型按照工具的参数说明书输出一个结构化调用请求，由外部程序真正执行后把结果喂回来。', chapter: 'A1'},
+  {id: 'tool-schema', zh: '工具描述', en: 'Tool Schema', def: '告诉模型「这个工具是干嘛的、参数怎么填」的说明书（JSON Schema），写得好坏直接决定模型会不会用。', chapter: 'A1'},
+
+  // ---- 下篇 A2 ----
+  {id: 'task-decomposition', zh: '任务分解', en: 'Task Decomposition', def: '把大任务拆成一串可执行的小步骤——规划的第一步，也是智能体可靠性的地基。', chapter: 'A2'},
+  {id: 'reflection', zh: '反思', en: 'Reflection', def: '让模型回头检查自己的输出并修正——用额外的计算换可靠性的经典模式。', chapter: 'A2'},
 ];
