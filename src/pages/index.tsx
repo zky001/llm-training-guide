@@ -40,9 +40,9 @@ const AGENT_CHAPTERS: {n: string; title: string; desc: string; href: string; don
   {n: 'A0', title: '从聊天到行动', desc: '智能体 = 模型 + 工具 + 循环；自主性光谱', href: '/agents/from-chat-to-action', done: true},
   {n: 'A1', title: '工具调用', desc: 'Function Calling 全流程；会用工具是训练出来的', href: '/agents/tool-use', done: true},
   {n: 'A2', title: '规划与反思', desc: '把大事拆小、做完回头看', href: '/agents/planning-reflection', done: true},
-  {n: 'A3', title: '记忆与上下文工程', desc: '工作记忆、长期记忆与 Agentic RAG', href: '/agents/memory-context', done: false},
-  {n: 'A4', title: '编排模式', desc: '五种工作流积木及其组合', href: '/agents/orchestration', done: false},
-  {n: 'A5', title: '多智能体系统', desc: '分工协作与 MCP / A2A 协议', href: '/agents/multi-agent', done: false},
+  {n: 'A3', title: '记忆与上下文工程', desc: '工作记忆、长期记忆与 Agentic RAG', href: '/agents/memory-context', done: true},
+  {n: 'A4', title: '编排模式', desc: '五种工作流积木及其组合', href: '/agents/orchestration', done: true},
+  {n: 'A5', title: '多智能体系统', desc: '分工协作与 MCP / A2A 协议', href: '/agents/multi-agent', done: true},
   {n: 'A6', title: '智能体上电脑', desc: '代码智能体与计算机使用', href: '/agents/computer-use', done: false},
   {n: 'A7', title: '评测与可靠性', desc: '错误复利、SWE-bench 与评测驱动开发', href: '/agents/agent-evaluation', done: false},
   {n: 'A8', title: '安全与未来', desc: '提示注入、最小权限与 Agentic RL', href: '/agents/safety-frontier', done: false},
@@ -77,7 +77,7 @@ function Hero() {
         <p className={styles.heroSubtitle}>
           上篇讲透大模型怎么炼成（预训练 → RLHF），下篇拆开智能体怎么办事（工具 → 循环 → 多智能体）。
           <br />
-          双轨难度 · 26 个动手实验 · 中文原创 · 完全开源
+          双轨难度 · 29 个动手实验 · 中文原创 · 完全开源
         </p>
         <div className={styles.heroButtons}>
           <Link className="button button--primary button--lg" to="/docs/intro">

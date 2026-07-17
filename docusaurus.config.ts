@@ -83,7 +83,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🎉 上篇完稿（9 章 · 23 个实验）· 🤖 下篇《智能体是怎么工作的》连载中：A0~A2 已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🎉 上篇完稿（9 章 · 23 个实验）· 🤖 下篇《智能体是怎么工作的》连载中：A0~A5 已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {

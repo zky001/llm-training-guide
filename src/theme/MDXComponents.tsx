@@ -30,6 +30,9 @@ import Panorama from '@site/src/components/interactive/Panorama';
 import TracePlayer from '@site/src/components/interactive/TracePlayer';
 import ToolCallLab from '@site/src/components/interactive/ToolCallLab';
 import PlannerCompare from '@site/src/components/interactive/PlannerCompare';
+import ContextManager from '@site/src/components/interactive/ContextManager';
+import PatternStudio from '@site/src/components/interactive/PatternStudio';
+import MultiAgentTheater from '@site/src/components/interactive/MultiAgentTheater';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -68,4 +71,7 @@ export default {
   TracePlayer,
   ToolCallLab,
   PlannerCompare,
+  ContextManager,
+  PatternStudio,
+  MultiAgentTheater,
 };

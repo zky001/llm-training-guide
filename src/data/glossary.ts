@@ -143,4 +143,23 @@ export const GLOSSARY: GlossaryEntry[] = [
   // ---- 下篇 A2 ----
   {id: 'task-decomposition', zh: '任务分解', en: 'Task Decomposition', def: '把大任务拆成一串可执行的小步骤——规划的第一步，也是智能体可靠性的地基。', chapter: 'A2'},
   {id: 'reflection', zh: '反思', en: 'Reflection', def: '让模型回头检查自己的输出并修正——用额外的计算换可靠性的经典模式。', chapter: 'A2'},
+
+  // ---- 下篇 A3 ----
+  {id: 'context-engineering', zh: '上下文工程', en: 'Context Engineering', def: '决定「什么信息进上下文、以什么形式、留多久」的工程学——智能体时代对提示工程的升级。', chapter: 'A3'},
+  {id: 'compaction', zh: '上下文压缩', en: 'Compaction', def: '把旧对话压缩成摘要腾出空间，让长任务跑得下去又不至于失忆的常用手段。', chapter: 'A3'},
+  {id: 'long-term-memory', zh: '长期记忆', en: 'Long-term Memory', def: '上下文之外的持久存储（文件、数据库、向量库），让智能体跨任务、跨会话记住事实与经验。', chapter: 'A3'},
+  {id: 'rag', zh: '检索增强生成', en: 'RAG', def: '先从资料库检索相关内容塞进上下文再回答；Agentic RAG 更进一步——把检索变成模型自主反复使用的工具。', chapter: 'A3'},
+
+  // ---- 下篇 A4 ----
+  {id: 'prompt-chaining', zh: '提示链', en: 'Prompt Chaining', def: '固定顺序的多次模型调用，每步输出喂给下一步——最朴素也最常用的工作流积木。', chapter: 'A4'},
+  {id: 'routing', zh: '路由', en: 'Routing', def: '先判断输入属于哪一类，再交给对应的专门分支处理——分诊台模式。', chapter: 'A4'},
+  {id: 'parallelization', zh: '并行', en: 'Parallelization', def: '同一任务多路同时做：或分片各管一段，或投票互相校验。', chapter: 'A4'},
+  {id: 'orchestrator-worker', zh: '编排者-工人', en: 'Orchestrator-Workers', def: '一个中枢动态拆解任务、派发给多个工人、最后汇总成品的模式。', chapter: 'A4'},
+  {id: 'evaluator-optimizer', zh: '评估者-优化者', en: 'Evaluator-Optimizer', def: '一个负责生成、一个负责挑毛病，循环到达标为止——反思模式的双角色版。', chapter: 'A4'},
+
+  // ---- 下篇 A5 ----
+  {id: 'mcp', zh: 'MCP 协议', en: 'Model Context Protocol', def: '连接模型与工具、数据源的开放标准——「AI 应用的 USB-C 接口」，一次接入处处可用（2024 年提出）。', chapter: 'A5'},
+  {id: 'a2a', zh: 'A2A 协议', en: 'Agent2Agent Protocol', def: '让不同家的智能体互相发现、对话与协作的开放协议（2025 年提出）。', chapter: 'A5'},
+  {id: 'sub-agent', zh: '子智能体', en: 'Sub-agent', def: '被主智能体派去干专项活的下属：用自己的独立上下文工作，干完只交结论不交过程。', chapter: 'A5'},
+  {id: 'context-isolation', zh: '上下文隔离', en: 'Context Isolation', def: '每个子智能体各用各的上下文，中间过程互不污染——多智能体系统的核心收益之一。', chapter: 'A5'},
 ];
