@@ -80,12 +80,32 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'gpu', zh: '图形处理器', en: 'GPU', def: '擅长同时做海量乘加运算的芯片，是训练大模型的主力硬件。', chapter: '4'},
   {id: 'checkpoint', zh: '检查点', en: 'Checkpoint', def: '训练过程中定期保存的模型参数快照，训练崩了可以从这里继续。', chapter: '4'},
 
+  // ---- 第 4 章（补充） ----
+  {id: 'mixed-precision', zh: '混合精度训练', en: 'Mixed Precision', def: '用 16 位数字做大部分计算（快、省显存），关键部位保留 32 位副本保精度。', chapter: '4'},
+  {id: 'gradient-clipping', zh: '梯度裁剪', en: 'Gradient Clipping', def: '给梯度装限速器：超过阈值就按比例缩小，防止一步大更新把训练带崩。', chapter: '4'},
+  {id: 'loss-spike', zh: '损失尖峰', en: 'Loss Spike', def: '训练中损失突然飙升的事故，常见处置是回滚到上个检查点并跳过可疑数据。', chapter: '4'},
+  {id: 'data-parallelism', zh: '数据并行', en: 'Data Parallelism (DP)', def: '每张卡放一份完整模型、各吃不同数据，每步结束后大家把梯度求平均。', chapter: '4'},
+  {id: 'tensor-parallelism', zh: '张量并行', en: 'Tensor Parallelism (TP)', def: '把每一层的大矩阵切开分给多张卡，算每层时都要卡间通信，需要极快互联。', chapter: '4'},
+  {id: 'pipeline-parallelism', zh: '流水线并行', en: 'Pipeline Parallelism (PP)', def: '把模型按层切段，每张卡管几层，数据像流水线一样逐段接力。', chapter: '4'},
+  {id: 'zero', zh: 'ZeRO', en: 'ZeRO (Zero Redundancy Optimizer)', def: '数据并行的省显存版：把优化器状态、梯度甚至参数切片分摊到各卡，用时再临时拼装。', chapter: '4'},
+  {id: 'mfu', zh: '算力利用率', en: 'MFU (Model FLOPs Utilization)', def: '实际有效算力占 GPU 理论峰值的比例，大规模训练能到四成左右就算优秀（2025 年）。', chapter: '4'},
+
   // ---- 第 5 章 ----
+  {id: 'base-model', zh: '基座模型', en: 'Base Model', def: '只做过预训练的模型：最强「接话茬选手」，会续写但不会好好回答问题。', chapter: '5'},
   {id: 'sft', zh: '监督微调', en: 'Supervised Fine-Tuning (SFT)', def: '用人工写好的「问题 → 优质回答」示范数据继续训练，教会模型按指令对话。', chapter: '5'},
   {id: 'rlhf', zh: '基于人类反馈的强化学习', en: 'RLHF', def: '让人类比较模型的多个回答、训练一个奖励模型，再用强化学习让模型往高分方向改进。', chapter: '5'},
   {id: 'reward-model', zh: '奖励模型', en: 'Reward Model', def: '从大量人类偏好比较中学会「给回答打分」的模型，充当 RLHF 里的裁判。', chapter: '5'},
   {id: 'alignment', zh: '对齐', en: 'Alignment', def: '让模型的行为符合人类意图和价值观（有用、诚实、无害）的一系列技术。', chapter: '5'},
   {id: 'hallucination', zh: '幻觉', en: 'Hallucination', def: '模型一本正经地编造不真实内容的现象，源于它本质上是在「接最像的话」。', chapter: '5'},
+  {id: 'preference-data', zh: '偏好数据', en: 'Preference Data', def: '「同一问题的两个回答，人类选了哪个」的记录，是训练奖励模型的原料。', chapter: '5'},
+  {id: 'ppo', zh: '近端策略优化', en: 'PPO', def: 'RLHF 常用的强化学习算法：追求高奖励，但每步更新都被夹在安全范围内。', chapter: '5'},
+  {id: 'kl-penalty', zh: 'KL 惩罚', en: 'KL Penalty', def: '拴在模型身上的橡皮筋：离原始模型的说话方式偏得越远，扣分越多。', chapter: '5'},
+  {id: 'reward-hacking', zh: '奖励钻空子', en: 'Reward Hacking', def: '模型发现裁判的漏洞并疯狂利用（比如灌水凑长度），得了高分却没变好。', chapter: '5'},
+  {id: 'dpo', zh: '直接偏好优化', en: 'DPO', def: '跳过奖励模型和强化学习，直接用偏好数据调整模型的简化对齐方法。', chapter: '5'},
+  {id: 'grpo', zh: '组相对策略优化', en: 'GRPO', def: '让同一道题的一组回答互相比较当基线的强化学习算法，省掉价值模型。', chapter: '5'},
+  {id: 'rlvr', zh: '可验证奖励强化学习', en: 'RLVR', def: '用能自动判对错的任务（数学、代码）当奖励来源做强化学习，不需要人类打分。', chapter: '5'},
+  {id: 'sycophancy', zh: '谄媚', en: 'Sycophancy', def: '模型顺着用户说、明知不对也附和的倾向——讨好式回答在人类标注中常拿高分。', chapter: '5'},
+  {id: 'chain-of-thought', zh: '思维链', en: 'Chain-of-Thought (CoT)', def: '让模型先写出推理过程再给答案；推理模型的「多想一会儿」就是加长版思维链。', chapter: '5'},
 
   // ---- 第 6 章 ----
   {id: 'inference', zh: '推理', en: 'Inference', def: '训练完成后实际使用模型生成结果的阶段（跟「逻辑推理」不是一个意思）。', chapter: '6'},

@@ -18,6 +18,10 @@ import TrainingLab from '@site/src/components/interactive/TrainingLab';
 import AttentionPlayground from '@site/src/components/interactive/AttentionPlayground';
 import TransformerFlow from '@site/src/components/interactive/TransformerFlow';
 import SamplingPlayground from '@site/src/components/interactive/SamplingPlayground';
+import DataPipeline from '@site/src/components/interactive/DataPipeline';
+import ScalingCalculator from '@site/src/components/interactive/ScalingCalculator';
+import ParallelismViz from '@site/src/components/interactive/ParallelismViz';
+import RlhfLab from '@site/src/components/interactive/RlhfLab';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -44,4 +48,8 @@ export default {
   AttentionPlayground,
   TransformerFlow,
   SamplingPlayground,
+  DataPipeline,
+  ScalingCalculator,
+  ParallelismViz,
+  RlhfLab,
 };
