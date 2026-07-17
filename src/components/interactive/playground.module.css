@@ -1,0 +1,261 @@
+/* ============ 实验卡片外壳 ============ */
+.card {
+  margin: 1.75rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: linear-gradient(
+    135deg,
+    rgba(74, 84, 196, 0.08),
+    rgba(42, 120, 214, 0.05)
+  );
+}
+
+.badge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.headText {
+  flex: 1;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.subtitle {
+  margin-top: 2px;
+  font-size: 0.84rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.5;
+}
+
+.body {
+  padding: 16px;
+}
+
+.footer {
+  padding: 10px 16px;
+  border-top: 1px dashed var(--ifm-color-emphasis-200);
+  font-size: 0.84rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+/* ============ 通用控件 ============ */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.btn {
+  padding: 6px 14px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.btn:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnPrimary {
+  composes: btn;
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: var(--ifm-color-primary-dark);
+  color: #fff;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+  font-size: 0.88rem;
+}
+
+.sliderLabel {
+  flex-shrink: 0;
+  min-width: 5.5em;
+  font-weight: 600;
+}
+
+.sliderRow input[type='range'] {
+  flex: 1;
+  min-width: 100px;
+  accent-color: var(--ifm-color-primary);
+}
+
+.sliderValue {
+  flex-shrink: 0;
+  min-width: 3.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+/* ============ 数据/状态展示 ============ */
+.statRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.stat {
+  flex: 1;
+  min-width: 110px;
+  padding: 8px 12px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.statLabel {
+  font-size: 0.74rem;
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 600;
+}
+
+.statValue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+}
+
+.message {
+  margin: 10px 0 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100);
+  border-left: 3px solid var(--ifm-color-primary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.svgWrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.svgWrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: var(--viz-surface);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  touch-action: none;
+}
+
+/* token 彩色小片 */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  margin: 2px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-size: 0.86rem;
+  font-family: var(--ifm-font-family-monospace);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  line-height: 1.5;
+}
+
+.chipBar {
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+  line-height: 1.9;
+}
+
+/* 横向概率条 */
+.hbarRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  font-size: 0.86rem;
+}
+
+.hbarLabel {
+  flex-shrink: 0;
+  width: 3.5em;
+  text-align: right;
+  font-weight: 600;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.hbarTrack {
+  flex: 1;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--ifm-color-emphasis-100);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.hbarTrack:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.hbarFill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--viz-s1);
+  transition: width 0.25s ease;
+}
+
+.hbarValue {
+  flex-shrink: 0;
+  width: 4.2em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ifm-color-emphasis-700);
+}

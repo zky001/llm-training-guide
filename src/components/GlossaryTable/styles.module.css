@@ -1,0 +1,35 @@
+.search {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+}
+
+.search:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -1px;
+}
+
+.groupTitle {
+  margin-top: 1.5rem;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.zh {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.en {
+  color: var(--ifm-color-emphasis-700);
+  font-style: italic;
+}

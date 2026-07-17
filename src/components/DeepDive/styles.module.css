@@ -1,0 +1,55 @@
+.box {
+  margin: 1.25rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.boxOpen {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.header:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+}
+
+.hint {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.body {
+  padding: 4px 16px 12px;
+  border-top: 1px dashed var(--ifm-color-emphasis-300);
+}
+
+.body > *:first-child {
+  margin-top: 0.75rem;
+}

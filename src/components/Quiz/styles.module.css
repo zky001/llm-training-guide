@@ -1,0 +1,134 @@
+.quiz {
+  margin: 1.5rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.quizHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  font-weight: 700;
+  background: var(--ifm-color-emphasis-100);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.progress {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.question {
+  padding: 14px 16px 6px;
+}
+
+.question + .question {
+  border-top: 1px dashed var(--ifm-color-emphasis-200);
+}
+
+.stem {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  text-align: left;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.option:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.option:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.optionLetter {
+  flex-shrink: 0;
+  width: 1.4em;
+  height: 1.4em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-200);
+  font-size: 0.8em;
+  font-weight: 700;
+}
+
+.optionCorrect {
+  border-color: var(--viz-good);
+  background: rgba(12, 163, 12, 0.08);
+  opacity: 1 !important;
+}
+
+.optionWrong {
+  border-color: var(--viz-bad);
+  background: rgba(208, 59, 59, 0.08);
+}
+
+.explanation {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.explainGood {
+  background: rgba(12, 163, 12, 0.08);
+}
+
+.explainBad {
+  background: rgba(208, 59, 59, 0.08);
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--ifm-color-emphasis-100);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.resetBtn {
+  flex-shrink: 0;
+  padding: 4px 12px;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.resetBtn:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}

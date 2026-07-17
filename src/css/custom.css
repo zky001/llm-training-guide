@@ -1,0 +1,90 @@
+/**
+ * 全站样式：主题色 + 可视化组件共用的图表色板。
+ * 图表色板来自经过色盲安全(CVD)验证的调色板，深浅色各一套，
+ * 交互组件一律通过 var(--viz-*) 取色，不要写死十六进制。
+ */
+@import 'katex/dist/katex.min.css';
+
+:root {
+  --ifm-color-primary: #4a54c4;
+  --ifm-color-primary-dark: #3d47b8;
+  --ifm-color-primary-darker: #3a43ae;
+  --ifm-color-primary-darkest: #30378f;
+  --ifm-color-primary-light: #5c66cf;
+  --ifm-color-primary-lighter: #6871d3;
+  --ifm-color-primary-lightest: #8991dd;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-heading-font-weight: 700;
+
+  /* 图表系列色（浅色模式） */
+  --viz-s1: #2a78d6; /* blue */
+  --viz-s2: #008300; /* green */
+  --viz-s3: #e87ba4; /* magenta */
+  --viz-s4: #eda100; /* yellow */
+  --viz-s5: #1baf7a; /* aqua */
+  --viz-s6: #eb6834; /* orange */
+  --viz-s7: #4a3aa7; /* violet */
+  --viz-s8: #e34948; /* red */
+  /* 图表底纹与文字 */
+  --viz-surface: #fcfcfb;
+  --viz-grid: #e1e0d9;
+  --viz-axis: #c3c2b7;
+  --viz-muted: #898781;
+  --viz-ink: #0b0b0b;
+  --viz-ink-2: #52514e;
+  --viz-good: #0ca30c;
+  --viz-bad: #d03b3b;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #8a8ff0;
+  --ifm-color-primary-dark: #6a70eb;
+  --ifm-color-primary-darker: #5a61e9;
+  --ifm-color-primary-darkest: #2b33e0;
+  --ifm-color-primary-light: #aaaef5;
+  --ifm-color-primary-lighter: #babdf7;
+  --ifm-color-primary-lightest: #eaebfd;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* 图表系列色（深色模式：同色相、按深色底重新取阶） */
+  --viz-s1: #3987e5;
+  --viz-s2: #008300;
+  --viz-s3: #d55181;
+  --viz-s4: #c98500;
+  --viz-s5: #199e70;
+  --viz-s6: #d95926;
+  --viz-s7: #9085e9;
+  --viz-s8: #e66767;
+  --viz-surface: #1a1a19;
+  --viz-grid: #2c2c2a;
+  --viz-axis: #383835;
+  --viz-muted: #898781;
+  --viz-ink: #ffffff;
+  --viz-ink-2: #c3c2b7;
+  --viz-good: #0ca30c;
+  --viz-bad: #e66767;
+}
+
+/* 正文里的行内小标签 */
+.badge-soft {
+  display: inline-block;
+  padding: 0.1em 0.55em;
+  border-radius: 999px;
+  font-size: 0.8em;
+  font-weight: 600;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* 文档页图片圆角 */
+.markdown img {
+  border-radius: 8px;
+}
+
+/* KaTeX 块级公式允许横向滚动，避免移动端撑破页面 */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}

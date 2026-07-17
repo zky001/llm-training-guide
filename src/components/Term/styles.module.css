@@ -1,0 +1,43 @@
+.term {
+  position: relative;
+  cursor: help;
+  border-bottom: 1.5px dotted var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  z-index: 200;
+  display: block;
+  width: max-content;
+  max-width: min(320px, 80vw);
+  padding: 10px 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ifm-font-color-base);
+  white-space: normal;
+}
+
+.tipTitle {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tipEn {
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.9em;
+}
+
+.tipDef {
+  display: block;
+}
