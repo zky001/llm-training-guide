@@ -33,6 +33,10 @@ import PlannerCompare from '@site/src/components/interactive/PlannerCompare';
 import ContextManager from '@site/src/components/interactive/ContextManager';
 import PatternStudio from '@site/src/components/interactive/PatternStudio';
 import MultiAgentTheater from '@site/src/components/interactive/MultiAgentTheater';
+import SweAgentReplay from '@site/src/components/interactive/SweAgentReplay';
+import ErrorCompounding from '@site/src/components/interactive/ErrorCompounding';
+import TraceDebugger from '@site/src/components/interactive/TraceDebugger';
+import InjectionLab from '@site/src/components/interactive/InjectionLab';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -74,4 +78,8 @@ export default {
   ContextManager,
   PatternStudio,
   MultiAgentTheater,
+  SweAgentReplay,
+  ErrorCompounding,
+  TraceDebugger,
+  InjectionLab,
 };

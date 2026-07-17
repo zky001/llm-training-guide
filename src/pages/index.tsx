@@ -43,10 +43,10 @@ const AGENT_CHAPTERS: {n: string; title: string; desc: string; href: string; don
   {n: 'A3', title: '记忆与上下文工程', desc: '工作记忆、长期记忆与 Agentic RAG', href: '/agents/memory-context', done: true},
   {n: 'A4', title: '编排模式', desc: '五种工作流积木及其组合', href: '/agents/orchestration', done: true},
   {n: 'A5', title: '多智能体系统', desc: '分工协作与 MCP / A2A 协议', href: '/agents/multi-agent', done: true},
-  {n: 'A6', title: '智能体上电脑', desc: '代码智能体与计算机使用', href: '/agents/computer-use', done: false},
-  {n: 'A7', title: '评测与可靠性', desc: '错误复利、SWE-bench 与评测驱动开发', href: '/agents/agent-evaluation', done: false},
-  {n: 'A8', title: '安全与未来', desc: '提示注入、最小权限与 Agentic RL', href: '/agents/safety-frontier', done: false},
-  {n: '附录', title: '实战路线', desc: '100 行代码写一个 Agent；框架地图', href: '/agents/appendix', done: false},
+  {n: 'A6', title: '智能体上电脑', desc: '代码智能体与计算机使用', href: '/agents/computer-use', done: true},
+  {n: 'A7', title: '评测与可靠性', desc: '错误复利、SWE-bench 与评测驱动开发', href: '/agents/agent-evaluation', done: true},
+  {n: 'A8', title: '安全与未来', desc: '提示注入、最小权限与 Agentic RL', href: '/agents/safety-frontier', done: true},
+  {n: '附录', title: '实战路线', desc: '100 行代码写一个 Agent；框架地图', href: '/agents/appendix', done: true},
 ];
 
 const PATHS: {icon: string; who: string; how: string}[] = [
@@ -77,7 +77,7 @@ function Hero() {
         <p className={styles.heroSubtitle}>
           上篇讲透大模型怎么炼成（预训练 → RLHF），下篇拆开智能体怎么办事（工具 → 循环 → 多智能体）。
           <br />
-          双轨难度 · 29 个动手实验 · 中文原创 · 完全开源
+          双轨难度 · 33 个动手实验 · 中文原创 · 完全开源
         </p>
         <div className={styles.heroButtons}>
           <Link className="button button--primary button--lg" to="/docs/intro">
@@ -160,7 +160,7 @@ export default function Home(): ReactNode {
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <Heading as="h2" className={styles.sectionTitle}>
-              🤖 下篇 · 智能体是怎么工作的（连载中）
+              🤖 下篇 · 智能体是怎么工作的（已完稿）
             </Heading>
             <div className={styles.chapterGrid}>
               {AGENT_CHAPTERS.map((c) => (

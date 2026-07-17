@@ -162,4 +162,18 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'a2a', zh: 'A2A 协议', en: 'Agent2Agent Protocol', def: '让不同家的智能体互相发现、对话与协作的开放协议（2025 年提出）。', chapter: 'A5'},
   {id: 'sub-agent', zh: '子智能体', en: 'Sub-agent', def: '被主智能体派去干专项活的下属：用自己的独立上下文工作，干完只交结论不交过程。', chapter: 'A5'},
   {id: 'context-isolation', zh: '上下文隔离', en: 'Context Isolation', def: '每个子智能体各用各的上下文，中间过程互不污染——多智能体系统的核心收益之一。', chapter: 'A5'},
+
+  // ---- 下篇 A6 ----
+  {id: 'sandbox', zh: '沙箱', en: 'Sandbox', def: '给智能体圈出的隔离操作环境：代码、文件随便折腾，坏了也伤不到真实系统。', chapter: 'A6'},
+  {id: 'computer-use', zh: '计算机使用', en: 'Computer Use', def: '让智能体像人一样操作电脑：看屏幕截图、移动鼠标、敲键盘——不需要对方提供 API。', chapter: 'A6'},
+
+  // ---- 下篇 A7 ----
+  {id: 'error-compounding', zh: '错误复利', en: 'Error Compounding', def: '多步任务的残酷算术：每步 95% 的成功率，二十步连乘后只剩三分之一。', chapter: 'A7'},
+  {id: 'pass-k', zh: 'pass^k', en: 'pass^k', def: '衡量稳定性的指标：连跑 k 次全部成功的概率——对「偶尔灵」和「次次灵」的智能体区别对待。', chapter: 'A7'},
+
+  // ---- 下篇 A8 ----
+  {id: 'prompt-injection', zh: '提示注入', en: 'Prompt Injection', def: '把恶意指令藏进智能体会读到的内容里（网页、邮件、文档），骗它执行攻击者的命令。', chapter: 'A8'},
+  {id: 'lethal-trifecta', zh: '致命三角', en: 'Lethal Trifecta', def: '私有数据 + 不可信内容 + 对外发送通道——三者凑齐，注入攻击就能偷走数据；拆掉任何一角攻击即不成立。', chapter: 'A8'},
+  {id: 'human-in-the-loop', zh: '人在环中', en: 'Human-in-the-Loop', def: '高风险动作执行前停下来请人确认——把人设计成流程里的一个正式节点。', chapter: 'A8'},
+  {id: 'agentic-rl', zh: '智能体强化学习', en: 'Agentic RL', def: '不再只训练「回答」，而是把整条多步任务轨迹（含工具调用）端到端地用强化学习优化。', chapter: 'A8'},
 ];
