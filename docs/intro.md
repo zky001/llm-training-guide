@@ -61,9 +61,9 @@ flowchart LR
 | [第 3 章 · Transformer 架构](/docs/transformer) | 注意力机制与现代大模型的骨架 | ✅ |
 | [第 4 章 · 预训练](/docs/pretraining) | 数据工程、Scaling Laws、GPU 集群并行训练 | ✅ |
 | [第 5 章 · 后训练与对齐](/docs/post-training) | SFT、RLHF、DPO，从「会说话」到「说人话」 | ✅ |
-| [第 6 章 · 推理与部署](/docs/inference) | KV Cache、量化、蒸馏，让模型跑得又快又省 | 🚧 |
-| [第 7 章 · 评测](/docs/evaluation) | 怎么科学地衡量一个模型好不好 | 🚧 |
-| [第 8 章 · 前沿与全景](/docs/frontier) | MoE、长上下文、多模态、推理模型 | 🚧 |
+| [第 6 章 · 推理与部署](/docs/inference) | KV Cache、量化、蒸馏，让模型跑得又快又省 | ✅ |
+| [第 7 章 · 评测](/docs/evaluation) | 怎么科学地衡量一个模型好不好 | ✅ |
+| [第 8 章 · 前沿与全景](/docs/frontier) | MoE、长上下文、多模态、推理模型 | ✅ |
 | [附录](/docs/appendix/glossary) | 术语表、动手实践路线、论文与资料清单 | ✅ |
 
 ## 🤝 参与共建

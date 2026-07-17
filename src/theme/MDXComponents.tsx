@@ -22,6 +22,11 @@ import DataPipeline from '@site/src/components/interactive/DataPipeline';
 import ScalingCalculator from '@site/src/components/interactive/ScalingCalculator';
 import ParallelismViz from '@site/src/components/interactive/ParallelismViz';
 import RlhfLab from '@site/src/components/interactive/RlhfLab';
+import KvCacheDemo from '@site/src/components/interactive/KvCacheDemo';
+import QuantizationDemo from '@site/src/components/interactive/QuantizationDemo';
+import JudgeGame from '@site/src/components/interactive/JudgeGame';
+import MoeDemo from '@site/src/components/interactive/MoeDemo';
+import Panorama from '@site/src/components/interactive/Panorama';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -52,4 +57,9 @@ export default {
   ScalingCalculator,
   ParallelismViz,
   RlhfLab,
+  KvCacheDemo,
+  QuantizationDemo,
+  JudgeGame,
+  MoeDemo,
+  Panorama,
 };

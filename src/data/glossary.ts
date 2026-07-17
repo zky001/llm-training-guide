@@ -112,4 +112,21 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'kv-cache', zh: 'KV 缓存', en: 'KV Cache', def: '把已算过的注意力中间结果存起来复用，让逐词生成不用每次从头重算。', chapter: '6'},
   {id: 'quantization', zh: '量化', en: 'Quantization', def: '把模型参数用更少的比特存储（如 16 位压到 4 位），牺牲一点精度换显存和速度。', chapter: '6'},
   {id: 'distillation', zh: '蒸馏', en: 'Distillation', def: '让小模型学习模仿大模型的输出，用小得多的体积保住大部分能力。', chapter: '6'},
+  {id: 'prefill', zh: '预填充', en: 'Prefill', def: '推理的第一阶段：把整段提示词一次性并行算完——算力密集，决定「首字延迟」。', chapter: '6'},
+  {id: 'decode', zh: '解码', en: 'Decode', def: '推理的第二阶段：一个 token 一个 token 往外蹦——受限于显存带宽，决定「出字速度」。', chapter: '6'},
+  {id: 'latency', zh: '延迟', en: 'Latency', def: '从发出请求到看到回复的等待时间；聊天场景最在乎首字延迟。', chapter: '6'},
+  {id: 'throughput', zh: '吞吐量', en: 'Throughput', def: '一套服务每秒能产出的总 token 数；面向大量用户时的核心指标，常与延迟互相牺牲。', chapter: '6'},
+  {id: 'continuous-batching', zh: '连续批处理', en: 'Continuous Batching', def: '谁的请求生成完就立刻腾位置给新请求，不等整批一起结束——推理服务的关键提速技术。', chapter: '6'},
+  {id: 'paged-attention', zh: '分页注意力', en: 'PagedAttention', def: 'vLLM 的核心技术：像操作系统管理内存一样按小块管理 KV 缓存，几乎消灭显存浪费。', chapter: '6'},
+
+  // ---- 第 7 章 ----
+  {id: 'benchmark', zh: '基准测试', en: 'Benchmark', def: '一套固定的考题加打分标准，用来横向比较不同模型的能力。', chapter: '7'},
+  {id: 'data-contamination', zh: '数据污染', en: 'Data Contamination', def: '评测考题混进了训练数据——模型是「背过原题」而不是「会做」，分数就失真了。', chapter: '7'},
+  {id: 'llm-as-judge', zh: '模型当裁判', en: 'LLM-as-Judge', def: '用一个强模型给其他模型的回答打分，便宜快速，但自带长度、自信、文风等偏差。', chapter: '7'},
+
+  // ---- 第 8 章 ----
+  {id: 'moe', zh: '专家混合', en: 'Mixture of Experts (MoE)', def: '把前馈网络换成一群「专家」，每个 token 只激活其中几个——参数可以巨大，计算量却不涨。', chapter: '8'},
+  {id: 'multimodal', zh: '多模态', en: 'Multimodal', def: '让同一个模型看图、听声、读文字——把不同形式的信息都变成 token 序列处理。', chapter: '8'},
+  {id: 'reasoning-model', zh: '推理模型', en: 'Reasoning Model', def: 'o1 / R1 一类先「多想一会儿」（生成长思维链）再作答的模型，用强化学习训练出来。', chapter: '8'},
+  {id: 'agent', zh: '智能体', en: 'Agent', def: '会自己规划步骤、调用工具（搜索、写代码、操作软件）来完成任务的大模型应用形态。', chapter: '8'},
 ];

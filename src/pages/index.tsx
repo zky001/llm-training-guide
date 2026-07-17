@@ -30,9 +30,9 @@ const CHAPTERS: {n: string; title: string; desc: string; href: string; done: boo
   {n: '第 3 章', title: 'Transformer 架构', desc: '注意力机制、QKV、位置编码、采样生成', href: '/docs/transformer', done: true},
   {n: '第 4 章', title: '预训练', desc: '数据工程、Scaling Laws、GPU 集群与并行策略', href: '/docs/pretraining', done: true},
   {n: '第 5 章', title: '后训练与对齐', desc: 'SFT、RLHF、DPO/GRPO、推理强化学习', href: '/docs/post-training', done: true},
-  {n: '第 6 章', title: '推理与部署', desc: 'KV Cache、量化、蒸馏、vLLM', href: '/docs/inference', done: false},
-  {n: '第 7 章', title: '评测', desc: 'Benchmark、数据污染、LLM 当裁判', href: '/docs/evaluation', done: false},
-  {n: '第 8 章', title: '前沿与全景', desc: 'MoE、长上下文、多模态、推理模型', href: '/docs/frontier', done: false},
+  {n: '第 6 章', title: '推理与部署', desc: 'KV Cache、量化、蒸馏、vLLM', href: '/docs/inference', done: true},
+  {n: '第 7 章', title: '评测', desc: 'Benchmark、数据污染、LLM 当裁判', href: '/docs/evaluation', done: true},
+  {n: '第 8 章', title: '前沿与全景', desc: 'MoE、长上下文、多模态、推理模型', href: '/docs/frontier', done: true},
   {n: '附录', title: '术语表 · 动手路线 · 资料', desc: '全站术语、nanoGPT 实践指南、论文清单', href: '/docs/appendix/glossary', done: true},
 ];
 

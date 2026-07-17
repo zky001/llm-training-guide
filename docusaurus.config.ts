@@ -57,7 +57,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🚧 项目持续建设中，第 0~5 章已上线（19 个交互实验）。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🎉 全书 9 章完稿：23 个交互实验 + 可下载全景海报。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {
