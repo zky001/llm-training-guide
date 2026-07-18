@@ -35,6 +35,12 @@ interface Question {
   /** 含糊描述模式下的错误行为 */
   vagueTool: string | null;
   vagueOutcome: string;
+  /** 「注入工具执行失败」模式：先错一次、读报错、改对重试 */
+  failCall?: string;
+  failResult?: string;
+  retryReason?: string;
+  retryCall?: string;
+  retryResult?: string;
 }
 
 const QUESTIONS: Question[] = [
@@ -57,6 +63,11 @@ const QUESTIONS: Question[] = [
     answer: '明天上海晴，9~16°C，早晚偏凉，建议带一件厚外套。',
     vagueTool: 'web_search',
     vagueOutcome: '描述含糊时模型退而选了「查询东西」（web_search），搜到的是上周的旧闻气温，给出了过时建议。',
+    failCall: 'get_weather({"city": "上海", "date": "明天"})',
+    failResult: '{"error": "date 格式非法：应为 YYYY-MM-DD，收到「明天」"}',
+    retryReason: '报错说 date 要写成 YYYY-MM-DD——那我把「明天」换算成具体日期再调一次。',
+    retryCall: 'get_weather({"city": "上海", "date": "2026-07-19"})',
+    retryResult: '{"condition": "晴", "low": "9°C", "high": "16°C"}',
   },
   {
     q: '899 美元大概是多少人民币？',
@@ -67,6 +78,11 @@ const QUESTIONS: Question[] = [
     answer: '按当前汇率（1 美元 ≈ 7.14 元），899 美元约合 6422 元人民币。',
     vagueTool: 'calculator',
     vagueOutcome: '模型选了「处理数字」听起来最像的 calculator，但它不知道汇率，只好用记忆里的旧汇率 6.9 硬算——差了 200 多块。',
+    failCall: 'exchange_rate({"amount": 899, "from": "美元", "to": "人民币"})',
+    failResult: '{"error": "unknown currency「美元」；请用 ISO 代码，如 USD、CNY"}',
+    retryReason: '报错说币种要用 ISO 代码——把「美元」改成 USD、「人民币」改成 CNY 再调。',
+    retryCall: 'exchange_rate({"amount": 899, "from": "USD", "to": "CNY"})',
+    retryResult: '{"value": 6421.6, "rate": 7.14}',
   },
   {
     q: '今天下午三点我有空吗？',
@@ -92,6 +108,7 @@ export default function ToolCallLab() {
   const [qIdx, setQIdx] = useState<number | null>(null);
   const [stage, setStage] = useState(0); // 0=未开始 1=已选工具 2=已调用 3=已回答
   const [vague, setVague] = useState(false);
+  const [failMode, setFailMode] = useState(false);
 
   const q = qIdx !== null ? QUESTIONS[qIdx] : null;
   const pickQuestion = (i: number) => {
@@ -100,6 +117,8 @@ export default function ToolCallLab() {
   };
 
   const effectiveTool = q ? (vague ? q.vagueTool : q.tool) : null;
+  // 失败重试演示只在「正常描述 + 该题有失败数据」时生效
+  const showFail = !!(failMode && !vague && q && q.failCall);
 
   return (
     <PlaygroundCard
@@ -138,9 +157,13 @@ export default function ToolCallLab() {
         })}
       </div>
 
-      <label style={{fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10}}>
-        <input type="checkbox" checked={vague} onChange={(e) => {setVague(e.target.checked); setStage(qIdx !== null ? 1 : 0);}} />
+      <label style={{fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4}}>
+        <input type="checkbox" checked={vague} onChange={(e) => {setVague(e.target.checked); if (e.target.checked) setFailMode(false); setStage(qIdx !== null ? 1 : 0);}} />
         ⚠️ 把工具描述换成含糊版（体验烂文档的后果）
+      </label>
+      <label style={{fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10}}>
+        <input type="checkbox" checked={failMode} onChange={(e) => {setFailMode(e.target.checked); if (e.target.checked) setVague(false); setStage(qIdx !== null ? 1 : 0);}} />
+        🔧 注入工具执行失败（看模型读报错、自己改对重试）——对「天气」「汇率」两题有效
       </label>
 
       {/* 问题选择 */}
@@ -176,14 +199,33 @@ export default function ToolCallLab() {
             </div>
           )}
 
-          {/* 第 2 步：调用与结果 */}
-          {stage >= 2 && !vague && q.call && (
+          {/* 第 2 步：调用与结果（正常路径） */}
+          {stage >= 2 && !vague && !showFail && q.call && (
             <div style={{padding: '8px 12px', borderRadius: 10, borderLeft: '4px solid var(--viz-s6)', background: 'var(--ifm-color-emphasis-100)', fontSize: '0.86rem'}}>
               <b style={{color: 'var(--viz-s6)'}}>🔧 第 2 步 · 生成调用（这也是「生成文本」！）：</b>
               <pre style={{margin: '6px 0', padding: '6px 10px', fontSize: '0.78rem'}}>{q.call}</pre>
               <b style={{color: 'var(--viz-s2)'}}>👀 外部程序执行后返回：</b>
               <pre style={{margin: '6px 0 0', padding: '6px 10px', fontSize: '0.78rem'}}>{q.result}</pre>
             </div>
+          )}
+
+          {/* 第 2 步：失败 → 读报错 → 改对重试（失败注入路径） */}
+          {stage >= 2 && showFail && (
+            <>
+              <div style={{padding: '8px 12px', borderRadius: 10, borderLeft: '4px solid var(--viz-bad)', background: 'rgba(208,59,59,0.06)', fontSize: '0.86rem'}}>
+                <b style={{color: 'var(--viz-s6)'}}>🔧 第 2 步 · 第一次调用：</b>
+                <pre style={{margin: '6px 0', padding: '6px 10px', fontSize: '0.78rem'}}>{q.failCall}</pre>
+                <b style={{color: 'var(--viz-bad)'}}>💥 工具执行失败，返回报错：</b>
+                <pre style={{margin: '6px 0 0', padding: '6px 10px', fontSize: '0.78rem'}}>{q.failResult}</pre>
+              </div>
+              <div style={{padding: '8px 12px', borderRadius: 10, borderLeft: '4px solid var(--viz-s5)', background: 'var(--ifm-color-emphasis-100)', fontSize: '0.86rem', lineHeight: 1.65}}>
+                <b style={{color: 'var(--viz-s5)'}}>🔁 第 2.5 步 · 模型读懂报错、改对重试：</b>
+                <div style={{margin: '4px 0'}}>{q.retryReason}</div>
+                <pre style={{margin: '6px 0', padding: '6px 10px', fontSize: '0.78rem'}}>{q.retryCall}</pre>
+                <b style={{color: 'var(--viz-s2)'}}>👀 这次成功返回：</b>
+                <pre style={{margin: '6px 0 0', padding: '6px 10px', fontSize: '0.78rem'}}>{q.retryResult}</pre>
+              </div>
+            </>
           )}
 
           {/* 第 3 步：回答 */}
@@ -205,6 +247,11 @@ export default function ToolCallLab() {
       {q && vague && stage >= 2 && q.vagueTool !== q.tool && (
         <Message>
           🪤 看到了吗：同一个模型、同一个问题，只是把说明书写含糊，任务就砸了。<b>工具描述是给模型看的接口文档</b>——写工具时最值得花时间的地方，往往不是代码，而是那一句描述。
+        </Message>
+      )}
+      {showFail && stage >= 3 && (
+        <Message>
+          🔁 这就是「错误处理三板斧」里最重要的一招：<b>把工具的报错原样回填给模型，让它自己改</b>。参数格式错了、日期没换算、币种写成了中文——模型读一眼报错就能改对重试，不用你写死每种错误的处理逻辑。真实智能体里，大量「看起来一次成功」的调用，背后其实是这样悄悄重试过一两轮的（回扣 A1.1 深入层的错误处理）。
         </Message>
       )}
       {!q && (
