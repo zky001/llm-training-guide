@@ -161,6 +161,18 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'context-augmentation', zh: '上下文拼装', en: 'Context Augmentation', def: '把检索到的块按一定格式拼进提示词，连同问题一起交给模型——RAG 的「增强」这一步。', chapter: 'K5'},
   {id: 'citation', zh: '引用标注', en: 'Citation', def: '让模型在答案里标明每句话出自哪个来源，把「答案」变成「可核对的答案」。', chapter: 'K5'},
 
+  // ---- 中篇 K6 ----
+  {id: 'rag-triad', zh: 'RAG 三元组', en: 'RAG Triad', def: '评测 RAG 的三个体检项：上下文相关性（检索对不对）、有据性（答案有没有依据）、答案相关性（有没有答到点）。', chapter: 'K6'},
+  {id: 'context-relevance', zh: '上下文相关性', en: 'Context Relevance', def: '检索回来的资料到底和问题相不相关——RAG 三元组的第一环，管「检索这一步做得好不好」。', chapter: 'K6'},
+  {id: 'groundedness', zh: '有据性', en: 'Groundedness / Faithfulness', def: '答案里的每句话是不是真的由检索资料支撑——查幻觉的主要指标，也叫忠实度。', chapter: 'K6'},
+  {id: 'answer-relevance', zh: '答案相关性', en: 'Answer Relevance', def: '答案到底有没有正面回答用户的问题——资料对、也有据，但答非所问照样是失败。', chapter: 'K6'},
+
+  // ---- 中篇 K7 ----
+  {id: 'graphrag', zh: 'GraphRAG', en: 'GraphRAG', def: '把知识组织成「实体+关系」的图谱再检索，能回答「顺着关系一跳跳推出来」的多跳问题。', chapter: 'K7'},
+  {id: 'multi-hop', zh: '多跳推理', en: 'Multi-hop Reasoning', def: '答案要串起好几段资料才能推出来（A→B、B→C，所以 A→C）——普通 RAG 的软肋。', chapter: 'K7'},
+  {id: 'agentic-rag', zh: '智能体式 RAG', en: 'Agentic RAG', def: '让模型自己决定查什么、查几轮、够不够——把检索从「固定前置一步」升级成模型自主使用的工具。', chapter: 'K7'},
+  {id: 'multimodal-rag', zh: '多模态 RAG', en: 'Multimodal RAG', def: '让图表、扫描件、图片也能被检索——把非文字内容也变成可查的知识。', chapter: 'K7'},
+
   // ---- 下篇 A0 ----
   {id: 'agent-loop', zh: '行动循环', en: 'Agent Loop', def: '智能体的心跳：思考 → 行动（调工具）→ 观察结果 → 再思考，循环直到任务完成。', chapter: 'A0'},
   {id: 'trace', zh: '轨迹', en: 'Trace', def: '智能体完成一次任务的全过程记录（每一步的思考、工具调用和结果），排错和评测都靠它。', chapter: 'A0'},

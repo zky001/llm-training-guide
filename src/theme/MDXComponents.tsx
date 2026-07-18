@@ -43,6 +43,9 @@ import ChunkingLab from '@site/src/components/interactive/ChunkingLab';
 import RetrievalArena from '@site/src/components/interactive/RetrievalArena';
 import RerankLab from '@site/src/components/interactive/RerankLab';
 import RagPipeline from '@site/src/components/interactive/RagPipeline';
+import FailureDiagnoser from '@site/src/components/interactive/FailureDiagnoser';
+import GraphRagDemo from '@site/src/components/interactive/GraphRagDemo';
+import RagVsLongContext from '@site/src/components/interactive/RagVsLongContext';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -94,4 +97,7 @@ export default {
   RetrievalArena,
   RerankLab,
   RagPipeline,
+  FailureDiagnoser,
+  GraphRagDemo,
+  RagVsLongContext,
 };

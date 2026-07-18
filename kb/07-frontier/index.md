@@ -1,17 +1,29 @@
 ---
 title: K7 · 进阶与前沿
-description: GraphRAG、Agentic RAG、RAG vs 长上下文、多模态 RAG（编写中）
+description: GraphRAG 多跳、Agentic RAG、RAG vs 长上下文、多模态——四个正在把 RAG 往前推的方向。
 ---
 
 # K7 · 进阶与前沿
 
-:::caution 🚧 本章编写中
-以下是本章规划，欢迎到 [GitHub](https://github.com/zky001/llm-training-guide/issues) 提建议。
+[K0](../00-why-rag/index.md) 到 [K6](../06-evaluation/index.md)，你已经会搭一个靠谱的 RAG，也会给它做体检了。最后一章，看四个正在把 RAG 往前推的方向——每一个都在补朴素 RAG 的一个短板：
+
+- 让它会**多跳推理**，回答「顺着关系跳几次才能推出来」的问题（GraphRAG）；
+- 让它**自己决定查几轮**，而不是死板地「查一次」（Agentic RAG）；
+- 想清楚在**长上下文时代** RAG 到底还要不要（2026 的真相）；
+- 让**图表、扫描件**也能被检索（多模态 RAG）。
+
+| 小节 | 你会获得的直觉 | 实验 |
+| --- | --- | --- |
+| [K7.1 GraphRAG](./01-graphrag.mdx) | 把资料连成图，回答多跳问题 | 🎮 GraphRAG 多跳演示 |
+| [K7.2 Agentic RAG](./02-agentic-rag.mdx) | 让模型自己决定查什么、查几轮 | — |
+| [K7.3 RAG vs 长上下文](./03-rag-vs-long-context.mdx) | 2026 的共识：混用，而非替代 | 🎮 成本权衡计算器 |
+| [K7.4 多模态 RAG](./04-multimodal-rag.mdx) | 图表和扫描件也能查 | — |
+| [小结与自测](./99-summary.mdx) | 全章要点回顾 + 综合自测 | 📝 |
+
+:::caution 时效提醒
+前沿是变化最快的部分。本章标注了大量年份（写作于 2026 年），读到「主流」「最新」这类词时，请留意它对应的时间点——这些结论的保质期，比前面讲原理的章节短得多。
 :::
 
-| 小节 | 内容 | 实验 |
-| --- | --- | --- |
-| K7.1 GraphRAG | 知识图谱做多跳推理，回答「一段段找不到」的问题 | 🎮 GraphRAG 多跳演示 |
-| K7.2 Agentic RAG | 让模型自己决定查什么、查几轮（接下篇 [A3.3](/agents/memory-context/agentic-rag)） | — |
-| K7.3 RAG vs 长上下文 | 2026 的共识：检索定证据集、长上下文做推理 | 🎮 成本/准确率权衡计算器 |
-| K7.4 多模态 RAG | 图表、扫描件也能检索 | — |
+:::tip 阅读前提
+本章建立在整个中篇 [K0~K6](../00-why-rag/index.md) 之上，只求看懂方向、不求穷尽细节。照例：正文人人能读，硬核内容折叠在「🔬 深入一层」里。
+:::

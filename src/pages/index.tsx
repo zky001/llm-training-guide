@@ -43,9 +43,9 @@ const KB_CHAPTERS: {n: string; title: string; desc: string; href: string; done: 
   {n: 'K3', title: '三种找法', desc: '关键词 vs 向量 vs 混合检索', href: '/kb/retrieval-methods', done: true},
   {n: 'K4', title: '重排', desc: '把最该看的顶上来', href: '/kb/reranking', done: true},
   {n: 'K5', title: '生成与引用', desc: '让答案有据可查', href: '/kb/generation', done: true},
-  {n: 'K6', title: '评测', desc: 'RAG 三元组与三大失败模式', href: '/kb/evaluation', done: false},
-  {n: 'K7', title: '进阶与前沿', desc: 'GraphRAG、Agentic RAG、RAG vs 长上下文', href: '/kb/frontier', done: false},
-  {n: '附录', title: '实战路线', desc: '100 行搭一个 RAG；向量库地图', href: '/kb/appendix', done: false},
+  {n: 'K6', title: '评测', desc: 'RAG 三元组与三大失败模式', href: '/kb/evaluation', done: true},
+  {n: 'K7', title: '进阶与前沿', desc: 'GraphRAG、Agentic RAG、RAG vs 长上下文', href: '/kb/frontier', done: true},
+  {n: '附录', title: '实战路线', desc: '100 行搭一个 RAG；向量库地图', href: '/kb/appendix', done: true},
 ];
 
 const AGENT_CHAPTERS: {n: string; title: string; desc: string; href: string; done: boolean}[] = [
@@ -87,9 +87,9 @@ function Hero() {
           大模型是怎么<span className={styles.heroAccent}>炼成</span>的
         </Heading>
         <p className={styles.heroSubtitle}>
-          三部曲：上篇讲大模型怎么炼成，中篇讲怎么给它接上你的知识（RAG），下篇拆开智能体怎么办事。
+          三部曲全部完稿：上篇讲大模型怎么炼成，中篇讲怎么给它接上你的知识（RAG），下篇拆开智能体怎么办事。
           <br />
-          双轨难度 · 39 个动手实验 · 中文原创 · 完全开源
+          双轨难度 · 42 个动手实验 · 中文原创 · 完全开源
         </p>
         <div className={styles.heroButtons}>
           <Link className="button button--primary button--lg" to="/docs/intro">
@@ -175,7 +175,7 @@ export default function Home(): ReactNode {
         <section className={clsx(styles.section, styles.sectionAlt)}>
           <div className="container">
             <Heading as="h2" className={styles.sectionTitle}>
-              📚 中篇 · 给 AI 接上你的知识 / RAG（连载中）
+              📚 中篇 · 给 AI 接上你的知识 / RAG（已完稿）
             </Heading>
             <div className={styles.chapterGrid}>
               {KB_CHAPTERS.map((c) => (
