@@ -36,13 +36,25 @@ const config: Config = {
       {
         hashed: true,
         language: ['zh', 'en'],
-        docsRouteBasePath: ['docs', 'agents'],
-        docsDir: ['docs', 'agents'],
+        docsRouteBasePath: ['docs', 'kb', 'agents'],
+        docsDir: ['docs', 'kb', 'agents'],
       },
     ],
   ],
 
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'kb',
+        path: 'kb',
+        routeBasePath: 'kb',
+        sidebarPath: './sidebarsKb.ts',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
+        editUrl: 'https://github.com/zky001/llm-training-guide/edit/main/',
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -83,7 +95,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🎉 上下篇全部完稿：《大模型是怎么炼成的》+《智能体是怎么工作的》共 18 章 · 33 个交互实验。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🎉 上下篇完稿 · 📚 中篇《给 AI 接上你的知识（RAG）》连载中：K0~K2 已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {
@@ -94,6 +106,13 @@ const config: Config = {
       },
       items: [
         {type: 'docSidebar', sidebarId: 'guideSidebar', position: 'left', label: '📖 上篇 · 大模型'},
+        {
+          type: 'docSidebar',
+          sidebarId: 'kbSidebar',
+          docsPluginId: 'kb',
+          position: 'left',
+          label: '📚 中篇 · 知识库',
+        },
         {
           type: 'docSidebar',
           sidebarId: 'agentsSidebar',
@@ -120,6 +139,7 @@ const config: Config = {
             {label: '第 1 章 · 什么是语言模型', to: '/docs/language-models'},
             {label: '第 2 章 · 神经网络与训练三件套', to: '/docs/neural-networks'},
             {label: '第 3 章 · Transformer 架构', to: '/docs/transformer'},
+            {label: '中篇 · 给 AI 接上你的知识（RAG）', to: '/kb/intro'},
             {label: '下篇 · 智能体是怎么工作的', to: '/agents/intro'},
           ],
         },

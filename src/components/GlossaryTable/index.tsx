@@ -12,6 +12,9 @@ const CHAPTER_NAMES: Record<string, string> = {
   '6': '第 6 章 · 推理与部署',
   '7': '第 7 章 · 评测',
   '8': '第 8 章 · 前沿与全景',
+  K0: '中篇 K0 · 为什么需要知识库',
+  K1: '中篇 K1 · 语义检索',
+  K2: '中篇 K2 · 切块的艺术',
   A0: '下篇 A0 · 从聊天到行动',
   A1: '下篇 A1 · 工具调用',
   A2: '下篇 A2 · 规划与反思',
@@ -43,7 +46,14 @@ export default function GlossaryTable() {
       if (!byChapter.has(key)) byChapter.set(key, []);
       byChapter.get(key)!.push(e);
     }
-    return [...byChapter.entries()].sort(([a], [b]) => a.localeCompare(b));
+    // 阅读顺序：上篇（数字 0~8）→ 中篇（K）→ 下篇（A）
+    const rank = (c: string) => {
+      if (/^\d/.test(c)) return `0_${c.padStart(2, '0')}`;
+      if (c.startsWith('K')) return `1_${c}`;
+      if (c.startsWith('A')) return `2_${c}`;
+      return `9_${c}`;
+    };
+    return [...byChapter.entries()].sort(([a], [b]) => rank(a).localeCompare(rank(b)));
   }, [query]);
 
   return (

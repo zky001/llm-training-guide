@@ -37,6 +37,9 @@ import SweAgentReplay from '@site/src/components/interactive/SweAgentReplay';
 import ErrorCompounding from '@site/src/components/interactive/ErrorCompounding';
 import TraceDebugger from '@site/src/components/interactive/TraceDebugger';
 import InjectionLab from '@site/src/components/interactive/InjectionLab';
+import ClosedVsOpenBook from '@site/src/components/interactive/ClosedVsOpenBook';
+import SemanticSearchLab from '@site/src/components/interactive/SemanticSearchLab';
+import ChunkingLab from '@site/src/components/interactive/ChunkingLab';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -82,4 +85,7 @@ export default {
   ErrorCompounding,
   TraceDebugger,
   InjectionLab,
+  ClosedVsOpenBook,
+  SemanticSearchLab,
+  ChunkingLab,
 };

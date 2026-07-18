@@ -36,6 +36,18 @@ const CHAPTERS: {n: string; title: string; desc: string; href: string; done: boo
   {n: '附录', title: '术语表 · 动手路线 · 资料', desc: '全站术语、nanoGPT 实践指南、论文清单', href: '/docs/appendix/glossary', done: true},
 ];
 
+const KB_CHAPTERS: {n: string; title: string; desc: string; href: string; done: boolean}[] = [
+  {n: 'K0', title: '为什么需要外挂大脑', desc: '模型三大先天缺陷；RAG = 开卷考试', href: '/kb/why-rag', done: true},
+  {n: 'K1', title: '语义检索', desc: '把「意思」变成坐标，按意思找资料', href: '/kb/semantic-search', done: true},
+  {n: 'K2', title: '切块的艺术', desc: '文档怎么切，决定检索准不准', href: '/kb/chunking', done: true},
+  {n: 'K3', title: '三种找法', desc: '关键词 vs 向量 vs 混合检索', href: '/kb/retrieval-methods', done: false},
+  {n: 'K4', title: '重排', desc: '把最该看的顶上来', href: '/kb/reranking', done: false},
+  {n: 'K5', title: '生成与引用', desc: '让答案有据可查', href: '/kb/generation', done: false},
+  {n: 'K6', title: '评测', desc: 'RAG 三元组与三大失败模式', href: '/kb/evaluation', done: false},
+  {n: 'K7', title: '进阶与前沿', desc: 'GraphRAG、Agentic RAG、RAG vs 长上下文', href: '/kb/frontier', done: false},
+  {n: '附录', title: '实战路线', desc: '100 行搭一个 RAG；向量库地图', href: '/kb/appendix', done: false},
+];
+
 const AGENT_CHAPTERS: {n: string; title: string; desc: string; href: string; done: boolean}[] = [
   {n: 'A0', title: '从聊天到行动', desc: '智能体 = 模型 + 工具 + 循环；自主性光谱', href: '/agents/from-chat-to-action', done: true},
   {n: 'A1', title: '工具调用', desc: 'Function Calling 全流程；会用工具是训练出来的', href: '/agents/tool-use', done: true},
@@ -75,13 +87,16 @@ function Hero() {
           大模型是怎么<span className={styles.heroAccent}>炼成</span>的
         </Heading>
         <p className={styles.heroSubtitle}>
-          上篇讲透大模型怎么炼成（预训练 → RLHF），下篇拆开智能体怎么办事（工具 → 循环 → 多智能体）。
+          三部曲：上篇讲大模型怎么炼成，中篇讲怎么给它接上你的知识（RAG），下篇拆开智能体怎么办事。
           <br />
-          双轨难度 · 33 个动手实验 · 中文原创 · 完全开源
+          双轨难度 · 36 个动手实验 · 中文原创 · 完全开源
         </p>
         <div className={styles.heroButtons}>
           <Link className="button button--primary button--lg" to="/docs/intro">
             📖 上篇 · 大模型
+          </Link>
+          <Link className="button button--primary button--lg" to="/kb/intro">
+            📚 中篇 · 知识库
           </Link>
           <Link className="button button--primary button--lg" to="/agents/intro">
             🤖 下篇 · 智能体
@@ -158,6 +173,28 @@ export default function Home(): ReactNode {
         </section>
 
         <section className={clsx(styles.section, styles.sectionAlt)}>
+          <div className="container">
+            <Heading as="h2" className={styles.sectionTitle}>
+              📚 中篇 · 给 AI 接上你的知识 / RAG（连载中）
+            </Heading>
+            <div className={styles.chapterGrid}>
+              {KB_CHAPTERS.map((c) => (
+                <Link key={c.n} to={c.href} className={styles.chapterCard}>
+                  <div className={styles.chapterHead}>
+                    <span className={styles.chapterNo}>{c.n}</span>
+                    <span className={c.done ? styles.badgeDone : styles.badgeWip}>
+                      {c.done ? '✅ 可阅读' : '🚧 规划中'}
+                    </span>
+                  </div>
+                  <div className={styles.chapterTitle}>{c.title}</div>
+                  <div className={styles.chapterDesc}>{c.desc}</div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.section}>
           <div className="container">
             <Heading as="h2" className={styles.sectionTitle}>
               🤖 下篇 · 智能体是怎么工作的（已完稿）

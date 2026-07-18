@@ -130,6 +130,21 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'reasoning-model', zh: '推理模型', en: 'Reasoning Model', def: 'o1 / R1 一类先「多想一会儿」（生成长思维链）再作答的模型，用强化学习训练出来。', chapter: '8'},
   {id: 'agent', zh: '智能体', en: 'Agent', def: '会自己规划步骤、调用工具（搜索、写代码、操作软件）来完成任务的大模型应用形态。', chapter: '8'},
 
+  // ---- 中篇 K0 ----
+  {id: 'rag', zh: '检索增强生成', en: 'Retrieval-Augmented Generation (RAG)', def: '回答前先从知识库检索相关资料塞进上下文——给模型一场「开卷考试」，而不是让它硬背。', chapter: 'K0'},
+  {id: 'knowledge-base', zh: '知识库', en: 'Knowledge Base', def: '你自己的、可被检索的资料集合（文档、网页、数据库），是 RAG 系统的「外挂大脑」。', chapter: 'K0'},
+  {id: 'grounding', zh: '有据回答', en: 'Grounding', def: '让模型的每句话都由检索到的原文支撑，而不是凭记忆编造——RAG 抑制幻觉的核心。', chapter: 'K0'},
+
+  // ---- 中篇 K1 ----
+  {id: 'semantic-search', zh: '语义检索', en: 'Semantic Search', def: '按「意思」而非「字面」找资料：把查询和文档都变成向量，比谁离得近。', chapter: 'K1'},
+  {id: 'vector-db', zh: '向量数据库', en: 'Vector Database', def: '专门存储向量并能极快找出「最近邻」的数据库，是语义检索的引擎。', chapter: 'K1'},
+  {id: 'ann', zh: '近似最近邻', en: 'Approximate Nearest Neighbor (ANN)', def: '在亿级向量里「几乎最近」地快速找相似项的算法——用一点点精度换巨大的速度。', chapter: 'K1'},
+  {id: 'cosine-similarity', zh: '余弦相似度', en: 'Cosine Similarity', def: '衡量两个向量方向有多接近的常用指标：越接近 1 越相似，是语义检索的标尺。', chapter: 'K1'},
+
+  // ---- 中篇 K2 ----
+  {id: 'chunking', zh: '切块', en: 'Chunking', def: '把长文档切成一段段小块再入库——切得好坏直接决定检索能不能命中要点。', chapter: 'K2'},
+  {id: 'chunk', zh: '文档块', en: 'Chunk', def: '文档被切分后的一小段，是检索和入库的基本单位。', chapter: 'K2'},
+
   // ---- 下篇 A0 ----
   {id: 'agent-loop', zh: '行动循环', en: 'Agent Loop', def: '智能体的心跳：思考 → 行动（调工具）→ 观察结果 → 再思考，循环直到任务完成。', chapter: 'A0'},
   {id: 'trace', zh: '轨迹', en: 'Trace', def: '智能体完成一次任务的全过程记录（每一步的思考、工具调用和结果），排错和评测都靠它。', chapter: 'A0'},
@@ -148,7 +163,6 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'context-engineering', zh: '上下文工程', en: 'Context Engineering', def: '决定「什么信息进上下文、以什么形式、留多久」的工程学——智能体时代对提示工程的升级。', chapter: 'A3'},
   {id: 'compaction', zh: '上下文压缩', en: 'Compaction', def: '把旧对话压缩成摘要腾出空间，让长任务跑得下去又不至于失忆的常用手段。', chapter: 'A3'},
   {id: 'long-term-memory', zh: '长期记忆', en: 'Long-term Memory', def: '上下文之外的持久存储（文件、数据库、向量库），让智能体跨任务、跨会话记住事实与经验。', chapter: 'A3'},
-  {id: 'rag', zh: '检索增强生成', en: 'RAG', def: '先从资料库检索相关内容塞进上下文再回答；Agentic RAG 更进一步——把检索变成模型自主反复使用的工具。', chapter: 'A3'},
 
   // ---- 下篇 A4 ----
   {id: 'prompt-chaining', zh: '提示链', en: 'Prompt Chaining', def: '固定顺序的多次模型调用，每步输出喂给下一步——最朴素也最常用的工作流积木。', chapter: 'A4'},
