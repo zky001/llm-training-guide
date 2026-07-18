@@ -40,9 +40,9 @@ const KB_CHAPTERS: {n: string; title: string; desc: string; href: string; done: 
   {n: 'K0', title: '为什么需要外挂大脑', desc: '模型三大先天缺陷；RAG = 开卷考试', href: '/kb/why-rag', done: true},
   {n: 'K1', title: '语义检索', desc: '把「意思」变成坐标，按意思找资料', href: '/kb/semantic-search', done: true},
   {n: 'K2', title: '切块的艺术', desc: '文档怎么切，决定检索准不准', href: '/kb/chunking', done: true},
-  {n: 'K3', title: '三种找法', desc: '关键词 vs 向量 vs 混合检索', href: '/kb/retrieval-methods', done: false},
-  {n: 'K4', title: '重排', desc: '把最该看的顶上来', href: '/kb/reranking', done: false},
-  {n: 'K5', title: '生成与引用', desc: '让答案有据可查', href: '/kb/generation', done: false},
+  {n: 'K3', title: '三种找法', desc: '关键词 vs 向量 vs 混合检索', href: '/kb/retrieval-methods', done: true},
+  {n: 'K4', title: '重排', desc: '把最该看的顶上来', href: '/kb/reranking', done: true},
+  {n: 'K5', title: '生成与引用', desc: '让答案有据可查', href: '/kb/generation', done: true},
   {n: 'K6', title: '评测', desc: 'RAG 三元组与三大失败模式', href: '/kb/evaluation', done: false},
   {n: 'K7', title: '进阶与前沿', desc: 'GraphRAG、Agentic RAG、RAG vs 长上下文', href: '/kb/frontier', done: false},
   {n: '附录', title: '实战路线', desc: '100 行搭一个 RAG；向量库地图', href: '/kb/appendix', done: false},
@@ -89,7 +89,7 @@ function Hero() {
         <p className={styles.heroSubtitle}>
           三部曲：上篇讲大模型怎么炼成，中篇讲怎么给它接上你的知识（RAG），下篇拆开智能体怎么办事。
           <br />
-          双轨难度 · 36 个动手实验 · 中文原创 · 完全开源
+          双轨难度 · 39 个动手实验 · 中文原创 · 完全开源
         </p>
         <div className={styles.heroButtons}>
           <Link className="button button--primary button--lg" to="/docs/intro">

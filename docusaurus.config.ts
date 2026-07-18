@@ -95,7 +95,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🎉 上下篇完稿 · 📚 中篇《给 AI 接上你的知识（RAG）》连载中：K0~K2 已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🎉 上下篇完稿 · 📚 中篇《给 AI 接上你的知识（RAG）》连载中：K0~K5 已上线。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {

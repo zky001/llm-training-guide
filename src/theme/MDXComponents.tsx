@@ -40,6 +40,9 @@ import InjectionLab from '@site/src/components/interactive/InjectionLab';
 import ClosedVsOpenBook from '@site/src/components/interactive/ClosedVsOpenBook';
 import SemanticSearchLab from '@site/src/components/interactive/SemanticSearchLab';
 import ChunkingLab from '@site/src/components/interactive/ChunkingLab';
+import RetrievalArena from '@site/src/components/interactive/RetrievalArena';
+import RerankLab from '@site/src/components/interactive/RerankLab';
+import RagPipeline from '@site/src/components/interactive/RagPipeline';
 
 /**
  * 注册为 MDX 全局组件：所有 .mdx 文档无需 import 即可直接使用
@@ -88,4 +91,7 @@ export default {
   ClosedVsOpenBook,
   SemanticSearchLab,
   ChunkingLab,
+  RetrievalArena,
+  RerankLab,
+  RagPipeline,
 };

@@ -145,6 +145,22 @@ export const GLOSSARY: GlossaryEntry[] = [
   {id: 'chunking', zh: '切块', en: 'Chunking', def: '把长文档切成一段段小块再入库——切得好坏直接决定检索能不能命中要点。', chapter: 'K2'},
   {id: 'chunk', zh: '文档块', en: 'Chunk', def: '文档被切分后的一小段，是检索和入库的基本单位。', chapter: 'K2'},
 
+  // ---- 中篇 K3 ----
+  {id: 'bm25', zh: 'BM25', en: 'BM25', def: '经典的关键词检索算法：按「查询词在文档里出现得多不多、稀不稀有」打分，精确匹配的老将。', chapter: 'K3'},
+  {id: 'keyword-search', zh: '关键词检索', en: 'Keyword / Lexical Search', def: '按字面匹配找文档：查询词一个不差地出现在文档里才算命中，擅长型号、专名等精确匹配。', chapter: 'K3'},
+  {id: 'hybrid-search', zh: '混合检索', en: 'Hybrid Search', def: '关键词检索和语义检索一起上，各补对方的盲区，再把两路结果融合——生产 RAG 的标配。', chapter: 'K3'},
+  {id: 'rrf', zh: '倒数排名融合', en: 'Reciprocal Rank Fusion (RRF)', def: '把两路检索结果合并的简单妙招：只看每条在各路里排第几名，名次越靠前加分越多，绕开了分数不可比的难题。', chapter: 'K3'},
+
+  // ---- 中篇 K4 ----
+  {id: 'reranking', zh: '重排', en: 'Reranking', def: '先粗召回一批候选，再用更精细（也更慢）的模型给它们重新打分排序，把最相关的顶到最前。', chapter: 'K4'},
+  {id: 'cross-encoder', zh: '交叉编码器', en: 'Cross-Encoder', def: '把查询和文档拼在一起送进模型细读、直接输出相关分——比双编码器准得多，但慢，只用于精排少量候选。', chapter: 'K4'},
+  {id: 'two-stage-retrieval', zh: '召回-精排两阶段', en: 'Retrieve-then-Rerank', def: '检索的黄金结构：第一阶段快而粗地召回几十条，第二阶段慢而精地重排选出前几名。', chapter: 'K4'},
+  {id: 'colbert', zh: 'ColBERT / 多向量', en: 'ColBERT / Late Interaction', def: '给每个 token 各存一个向量、检索时做「细粒度对齐」的方法，兼顾双编码器的快和交叉编码器的准。', chapter: 'K4'},
+
+  // ---- 中篇 K5 ----
+  {id: 'context-augmentation', zh: '上下文拼装', en: 'Context Augmentation', def: '把检索到的块按一定格式拼进提示词，连同问题一起交给模型——RAG 的「增强」这一步。', chapter: 'K5'},
+  {id: 'citation', zh: '引用标注', en: 'Citation', def: '让模型在答案里标明每句话出自哪个来源，把「答案」变成「可核对的答案」。', chapter: 'K5'},
+
   // ---- 下篇 A0 ----
   {id: 'agent-loop', zh: '行动循环', en: 'Agent Loop', def: '智能体的心跳：思考 → 行动（调工具）→ 观察结果 → 再思考，循环直到任务完成。', chapter: 'A0'},
   {id: 'trace', zh: '轨迹', en: 'Trace', def: '智能体完成一次任务的全过程记录（每一步的思考、工具调用和结果），排错和评测都靠它。', chapter: 'A0'},
