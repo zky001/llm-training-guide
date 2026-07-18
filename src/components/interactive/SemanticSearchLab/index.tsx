@@ -1,7 +1,9 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useRef, useState} from 'react';
 import PlaygroundCard from '../PlaygroundCard';
 import {Btn, BtnRow, Message} from '../ui';
 import {RAG_PASSAGES, RAG_QUERIES, simFromPos, keywordScore} from '@site/src/data/ragCorpus';
+import LiveConfigPanel from '../LiveConfig';
+import {loadConfig, embed, cosine} from '@site/src/lib/liveClient';
 import styles from '../playground.module.css';
 
 /**
@@ -46,6 +48,49 @@ export default function SemanticSearchLab() {
   const top3 = ranked.slice(0, 3);
   const topIds = new Set(top3.map((r) => r.p.id));
   const kwZero = mode === 'keyword' && top3.every((r) => r.kw === 0);
+
+  // ---- 真实模式：用读者自己的 embedding 服务真检索 ----
+  const [hasCfg, setHasCfg] = useState(false);
+  const [liveQuery, setLiveQuery] = useState('买的东西不想要了怎么办');
+  const [liveBusy, setLiveBusy] = useState(false);
+  const [liveErr, setLiveErr] = useState('');
+  const [liveResults, setLiveResults] = useState<{title: string; text: string; sim: number}[] | null>(null);
+  const passageVecs = useRef<number[][] | null>(null); // 缓存段落向量，避免重复编码
+
+  const refreshCfg = () => setHasCfg(!!loadConfig());
+  // 首次渲染后检查是否已配置
+  React.useEffect(() => {
+    refreshCfg();
+  }, []);
+
+  const runLive = async () => {
+    const cfg = loadConfig();
+    if (!cfg) {
+      setLiveErr('请先在上方「真实模式设置」里填好你的模型服务并测试连接。');
+      return;
+    }
+    if (!liveQuery.trim()) return;
+    setLiveBusy(true);
+    setLiveErr('');
+    try {
+      // 段落向量只算一次，之后缓存复用（真实工程里这是「离线建库」那一步）
+      if (!passageVecs.current) {
+        passageVecs.current = await embed(RAG_PASSAGES.map((p) => p.text), cfg);
+      }
+      const [qv] = await embed([liveQuery], cfg);
+      const scored = RAG_PASSAGES.map((p, i) => ({
+        title: p.title,
+        text: p.text,
+        sim: cosine(qv, passageVecs.current![i]),
+      })).sort((a, b) => b.sim - a.sim);
+      setLiveResults(scored.slice(0, 4));
+    } catch (e) {
+      setLiveErr(e instanceof Error ? e.message : String(e));
+      passageVecs.current = null; // 出错时清缓存，下次重算
+    } finally {
+      setLiveBusy(false);
+    }
+  };
 
   return (
     <PlaygroundCard
@@ -125,6 +170,54 @@ export default function SemanticSearchLab() {
         <Message>
           🍎 「苹果」有歧义：关键词检索把<b>水果</b>和<b>手机充电线</b>都捞了上来（都含「苹果」二字），分不清你想要哪个。切回语义检索——它能根据「想买」的语境，把冰糖心苹果排到前面。
         </Message>
+      )}
+
+      {/* ---- 真实模式 ---- */}
+      <hr style={{margin: '18px 0 12px', border: 'none', borderTop: '2px dashed var(--ifm-color-emphasis-300)'}} />
+      <div style={{fontSize: '0.95rem', fontWeight: 700, marginBottom: 4}}>🔴 真实模式：用真 embedding 检索这个知识库</div>
+      <div style={{fontSize: '0.84rem', color: 'var(--ifm-color-emphasis-700)', marginBottom: 10, lineHeight: 1.6}}>
+        上面的地图是二维示意。填入你自己的模型服务，就能用<b>真正的高维向量</b>检索上面那 11 段资料——随便输一句话，看真实的语义检索排名。
+      </div>
+
+      <LiveConfigPanel needEmbed onChange={refreshCfg} />
+
+      <div style={{display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap'}}>
+        <input
+          type="text"
+          value={liveQuery}
+          onChange={(e) => setLiveQuery(e.target.value)}
+          onKeyDown={(e) => {if (e.key === 'Enter') runLive();}}
+          placeholder="随便输一句话，比如「手机续航怎么样」"
+          style={{flex: 1, minWidth: 180, padding: '7px 10px', borderRadius: 8, border: '1px solid var(--ifm-color-emphasis-300)', background: 'var(--ifm-background-surface-color)', color: 'var(--ifm-font-color-base)', fontSize: '0.9rem'}}
+        />
+        <Btn primary onClick={runLive} disabled={liveBusy || !hasCfg}>
+          {liveBusy ? '检索中…' : '🔎 真检索'}
+        </Btn>
+      </div>
+      {!hasCfg && (
+        <div style={{fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)', marginTop: 6}}>
+          👆 先展开「真实模式设置」填好服务并测试连接，「真检索」按钮就会亮起。
+        </div>
+      )}
+      {liveErr && (
+        <div style={{marginTop: 8, padding: '8px 10px', borderRadius: 8, fontSize: '0.82rem', lineHeight: 1.6, background: 'rgba(208,59,59,0.08)', border: '1px solid var(--viz-bad)'}}>
+          ❌ {liveErr}
+        </div>
+      )}
+      {liveResults && (
+        <div style={{marginTop: 10}}>
+          <div style={{fontSize: '0.84rem', fontWeight: 700, marginBottom: 4}}>真实 embedding 检索结果（余弦相似度，Top 4）：</div>
+          {liveResults.map((r, i) => (
+            <div key={i} className={styles.hbarRow} style={{cursor: 'default'}}>
+              <span className={styles.hbarLabel} style={{width: '5em'}}>{r.title}</span>
+              <div className={styles.hbarTrack}><div className={styles.hbarFill} style={{width: `${Math.max(0, r.sim) * 100}%`}} /></div>
+              <span className={styles.hbarValue}>{(r.sim * 100).toFixed(1)}%</span>
+            </div>
+          ))}
+          <div style={{fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)', marginTop: 6, lineHeight: 1.6}}>
+            ✅ 这就是真实 RAG 检索的第一步：查询和每段资料都被你的嵌入模型编成了几百上千维的向量，再按余弦相似度排序——和二维地图是同一个道理，只是维度高得多、也准得多。段落向量已缓存，换个查询只需再编码一次查询。
+          </div>
+        </div>
       )}
     </PlaygroundCard>
   );

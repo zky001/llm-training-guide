@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import PlaygroundCard from '../PlaygroundCard';
 import {Btn, BtnRow, Message} from '../ui';
+import LiveConfigPanel from '../LiveConfig';
+import {loadConfig, chat} from '@site/src/lib/liveClient';
 import styles from '../playground.module.css';
 
 /**
@@ -43,6 +45,35 @@ const STAGES = [
 
 export default function RagPipeline() {
   const [step, setStep] = useState(0);
+
+  // ---- 真实模式：用读者的模型按同一个提示词真生成 ----
+  const [hasCfg, setHasCfg] = useState(false);
+  const [liveBusy, setLiveBusy] = useState(false);
+  const [liveErr, setLiveErr] = useState('');
+  const [liveAnswer, setLiveAnswer] = useState('');
+  const refreshCfg = () => setHasCfg(!!loadConfig());
+  React.useEffect(() => {
+    refreshCfg();
+  }, []);
+
+  const runLive = async () => {
+    const cfg = loadConfig();
+    if (!cfg) {
+      setLiveErr('请先在下方「真实模式设置」里填好你的模型服务并测试连接。');
+      return;
+    }
+    setLiveBusy(true);
+    setLiveErr('');
+    setLiveAnswer('');
+    try {
+      const out = await chat([{role: 'user', content: PROMPT}], cfg, {temperature: 0.2});
+      setLiveAnswer(out || '（模型没有返回内容）');
+    } catch (e) {
+      setLiveErr(e instanceof Error ? e.message : String(e));
+    } finally {
+      setLiveBusy(false);
+    }
+  };
 
   return (
     <PlaygroundCard
@@ -152,6 +183,40 @@ export default function RagPipeline() {
         <Btn primary onClick={() => setStep((s) => Math.min(5, s + 1))} disabled={step === 5}>下一步 →</Btn>
         <Btn onClick={() => setStep(0)} disabled={step === 0}>↺ 从头看</Btn>
       </BtnRow>
+
+      {/* ---- 真实模式 ---- */}
+      <hr style={{margin: '18px 0 12px', border: 'none', borderTop: '2px dashed var(--ifm-color-emphasis-300)'}} />
+      <div style={{fontSize: '0.95rem', fontWeight: 700, marginBottom: 4}}>🔴 真实模式：让你的模型按第 ④ 步那个提示词真生成一次</div>
+      <div style={{fontSize: '0.84rem', color: 'var(--ifm-color-emphasis-700)', marginBottom: 10, lineHeight: 1.6}}>
+        上面第 ⑤ 步的答案是预录的。填入你自己的模型服务，把第 ④ 步那个「资料 + 只根据资料答 + 标来源」的提示词真发给它，看它生成的<b>带引用、有据</b>的答案——这就是 RAG 生成环节的真实样子。
+      </div>
+
+      <LiveConfigPanel onChange={refreshCfg} />
+
+      <BtnRow>
+        <Btn primary onClick={runLive} disabled={liveBusy || !hasCfg}>{liveBusy ? '生成中…' : '✍️ 用真模型生成'}</Btn>
+      </BtnRow>
+      {!hasCfg && (
+        <div style={{fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)', marginTop: 6}}>
+          👆 先展开「真实模式设置」填好服务并测试连接，「用真模型生成」按钮就会亮起。
+        </div>
+      )}
+      {liveErr && (
+        <div style={{marginTop: 8, padding: '8px 10px', borderRadius: 8, fontSize: '0.82rem', lineHeight: 1.6, background: 'rgba(208,59,59,0.08)', border: '1px solid var(--viz-bad)'}}>
+          ❌ {liveErr}
+        </div>
+      )}
+      {liveAnswer && (
+        <div style={{marginTop: 10}}>
+          <div style={{fontSize: '0.84rem', fontWeight: 700, marginBottom: 4}}>你的模型生成的答案：</div>
+          <div style={{padding: '10px 14px', borderRadius: 10, border: '1.5px solid var(--viz-s7)', background: 'var(--ifm-color-emphasis-100)', fontSize: '0.9rem', lineHeight: 1.8, whiteSpace: 'pre-wrap'}}>
+            {liveAnswer}
+          </div>
+          <div style={{fontSize: '0.8rem', color: 'var(--ifm-color-emphasis-600)', marginTop: 6, lineHeight: 1.6}}>
+            ✅ 对比一下预录答案：好的模型会照着两段资料答、标上来源、并对资料没提的东西说「资料未提及」。如果它没标来源或掺了资料外的内容，那正是 K5.2 讲的「有据性」问题——同样的资料、同样的提示词，换个模型或调调提示词，效果会明显不同。
+          </div>
+        </div>
+      )}
     </PlaygroundCard>
   );
 }

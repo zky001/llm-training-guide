@@ -95,7 +95,7 @@ const config: Config = {
     announcementBar: {
       id: 'wip',
       content:
-        '🎉 三部曲全部完稿：《大模型是怎么炼成的》+《给 AI 接上你的知识（RAG）》+《智能体是怎么工作的》共 26 章 · 42 个交互实验。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
+        '🎉 三部曲全部完稿（26 章 · 42 个交互实验）· 🔴 新增「真实模式」：中篇语义搜索与 RAG 全流程可填自己的模型服务真跑。欢迎 <a target="_blank" rel="noopener noreferrer" href="https://github.com/zky001/llm-training-guide">Star ⭐ 与参与共建</a>！',
       isCloseable: true,
     },
     navbar: {
